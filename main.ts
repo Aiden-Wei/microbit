@@ -215,11 +215,11 @@ namespace startbit {
                         volume = arg2Int;
                     }
                 }
-		else if (cmd.length == 4) {
+		else if (cmd.length == 4 || cmd.length == 5) {
                     actiongroup_finished = true;
                 } 
 		else {
-		    //actiongroup_finished = true;
+
                 }
             }
             if (cmd.charAt(0).compare("C") == 0 && cmd.length == 11) {
