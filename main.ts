@@ -185,7 +185,7 @@ namespace startbit {
     let servo2Angle: number = 0xfff;
 
     let macStr: string = "";
-    let actiongroup_finished = true;
+    let actiongroup_finished = 1;
     /**
     * Get the handle command.
     */
@@ -215,11 +215,11 @@ namespace startbit {
                         volume = arg2Int;
                     }
                 }
-		else if (cmd.charAt(5).compare("C") == 0) {
-                    actiongroup_finished = true;
-                } 
+		//else if (cmd.charAt(5).compare("C") == 0) {
+                    //actiongroup_finished = true;
+               // } 
 		else {
-
+			actiongroup_finished = cmd.length
                 }
             }
             if (cmd.charAt(0).compare("C") == 0 && cmd.length == 11) {
@@ -423,14 +423,14 @@ namespace startbit {
         buf[5] = times & 0xff;
         buf[6] = (times >> 8) & 0xff;
 
-        actiongroup_finished = false;
+        actiongroup_finished = 0;
         serial.writeBuffer(buf);
     }
     /**
      * Wait for Actiongroup Finishing
      */
     //% weight=98 blockId=startbit_actionRunover block="Action run over"
-    export function startbit_actionRunover(): boolean {
+    export function startbit_actionRunover(): number {
         return actiongroup_finished;
     }
 
