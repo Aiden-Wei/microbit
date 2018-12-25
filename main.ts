@@ -432,7 +432,7 @@ namespace startbit {
      * Wait for Actiongroup Finishing
      */
     //% weight=98 blockId=startbit_actionRunover block="Action run over"
-    export function startbit_actionRunover(): number {
+    export function startbit_actionRunover(): boolean {
         return actiongroup_finished;
     }
 
