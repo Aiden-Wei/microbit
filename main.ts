@@ -215,7 +215,7 @@ namespace startbit {
                         volume = arg2Int;
                     }
                 }
-		else if (cmd.charAt(0).compare("$") == 6) {
+		else if (cmd.charAt(6).compare("$") == 0) {
                     actiongroup_finished = true;
                 } 
 		else {
