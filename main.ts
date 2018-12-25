@@ -185,7 +185,7 @@ namespace startbit {
     let servo2Angle: number = 0xfff;
 
     let macStr: string = "";
-    let actiongroup_finished = 1;
+    let actiongroup_finished = true;
     /**
     * Get the handle command.
     */
@@ -219,9 +219,11 @@ namespace startbit {
                     //actiongroup_finished = true;
                // } 
 		else {
-			actiongroup_finished = cmd.length
                 }
             }
+            if (cmd.charAt(0).compare("W") == 0) {
+		actiongroup_finished = true;  
+	    }
             if (cmd.charAt(0).compare("C") == 0 && cmd.length == 11) {
                 if (lhRGBLightBelt != null) {
                     for (let i = 0; i < 10; i++) {
@@ -423,7 +425,7 @@ namespace startbit {
         buf[5] = times & 0xff;
         buf[6] = (times >> 8) & 0xff;
 
-        actiongroup_finished = 0;
+        actiongroup_finished = false;
         serial.writeBuffer(buf);
     }
     /**
