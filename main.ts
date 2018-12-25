@@ -219,11 +219,12 @@ namespace startbit {
                     //actiongroup_finished = true;
                // } 
 		else {
+			actiongroup_finished = true;
                 }
             }
-            if (cmd.charAt(0).compare("W") == 0) {
-		actiongroup_finished = true;  
-	    }
+            //if (cmd.charAt(0).compare("W") == 0) {
+		//actiongroup_finished = true;  
+	   // }
             if (cmd.charAt(0).compare("C") == 0 && cmd.length == 11) {
                 if (lhRGBLightBelt != null) {
                     for (let i = 0; i < 10; i++) {
