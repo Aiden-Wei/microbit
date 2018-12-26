@@ -200,7 +200,10 @@ namespace startbit {
 		
             let cmd: string = handleCmd.substr(0, index);
             if (cmd.charAt(0).compare("A") == 0) {
-                if (cmd.length == 7) {
+		if (cmd.length == 5) {
+			actiongroup_finished = true;
+		}
+		else if (cmd.length == 7) {
                     let arg1Int: number = strToNumber(cmd.substr(1, 2));
                     let arg2Int: number = strToNumber(cmd.substr(3, 2));
                     let arg3Int: number = strToNumber(cmd.substr(5, 2));
@@ -215,14 +218,11 @@ namespace startbit {
                     if (arg2Int != -1) {
                         volume = arg2Int;
                     }
-                }
-		//else if (cmd.charAt(5).compare("C") == 0) {
-                    //actiongroup_finished = true;
-               // } 
+                } 
 		else {
 			//actiongroup_finished = true;
                 }
-		actiongroup_finished = true;    
+		//actiongroup_finished = true;    
             }
             //if (cmd.charAt(0).compare("W") == 0) {
 		//actiongroup_finished = true;  
