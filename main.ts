@@ -220,9 +220,12 @@ namespace startbit {
                     //actiongroup_finished = true;
                // } 
 		else {
-			actiongroup_finished = true;
+			//actiongroup_finished = true;
                 }
             }
+	    else {
+		    actiongroup_finished = true;
+		 }
             //if (cmd.charAt(0).compare("W") == 0) {
 		//actiongroup_finished = true;  
 	   // }
