@@ -185,7 +185,7 @@ namespace startbit {
     let servo2Angle: number = 0xfff;
 
     let macStr: string = "";
-    let actiongroup_finished = true;
+    let actiongroup_finished = false;
     /**
     * Get the handle command.
     */
