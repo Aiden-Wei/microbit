@@ -204,7 +204,7 @@ namespace startbit {
 			//actiongroup_finished = true;
 		//}
 		 if (cmd.length == 7) {
-			 actiongroup_finished = true;
+			 //actiongroup_finished = true;
                     let arg1Int: number = strToNumber(cmd.substr(1, 2));
                     let arg2Int: number = strToNumber(cmd.substr(3, 2));
                     let arg3Int: number = strToNumber(cmd.substr(5, 2));
@@ -225,9 +225,9 @@ namespace startbit {
                 }
 		//actiongroup_finished = true;    
             }
-            //if (cmd.charAt(0).compare("W") == 0) {
-		//actiongroup_finished = true;  
-	   // }
+            if (cmd.charAt(0).compare("W") == 0) {
+		actiongroup_finished = true;  
+	    }
             if (cmd.charAt(0).compare("C") == 0 && cmd.length == 11) {
                 if (lhRGBLightBelt != null) {
                     for (let i = 0; i < 10; i++) {
