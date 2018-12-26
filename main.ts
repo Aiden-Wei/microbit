@@ -197,7 +197,7 @@ namespace startbit {
             return;
         let index = findIndexof(handleCmd, "$", 0);
         if (index != -1) {
-		actiongroup_finished = true;
+		
             let cmd: string = handleCmd.substr(0, index);
             if (cmd.charAt(0).compare("A") == 0) {
                 if (cmd.length == 7) {
@@ -220,7 +220,7 @@ namespace startbit {
                     //actiongroup_finished = true;
                // } 
 		else {
-			//actiongroup_finished = true;
+			actiongroup_finished = true;
                 }
             }
             //if (cmd.charAt(0).compare("W") == 0) {
