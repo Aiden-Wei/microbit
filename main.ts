@@ -405,7 +405,7 @@ namespace startbit {
         buf[0] = 0x55;
         buf[1] = 0x55;
         buf[2] = (index.length*3 + 5) & 0xff;
-        buf[3] = 0x35;//cmd type DEC 54
+        buf[3] = 0x01;//cmd type DEC 54
         buf[4] = index.length & 0xff;
         buf[5] = duration & 0xff;
         buf[6] = (duration >> 8) & 0xff;
