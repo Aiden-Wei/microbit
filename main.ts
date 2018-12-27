@@ -398,7 +398,7 @@ namespace startbit {
             return;
 	    }
 	angle[i] += 120;
-        let position[i] = mapRGB(angle, 0, 240, 0, 1000);
+        let position[i] = mapRGB(angle[i], 0, 240, 0, 1000);
 	}
 	    
         let buf = pins.createBuffer(index.length+7);
@@ -411,8 +411,8 @@ namespace startbit {
         buf[6] = (duration >> 8) & 0xff;
 	for (let i = 0; i < angle.length; i++) {
 	    buf[7 + i*3] = index[i];
-	    //buf[8 + i*3] = position[i] & 0xff;
-	    //buf[9 + i*3] = (position[i] >> 8) & 0xff;
+	    buf[8 + i*3] = position[i] & 0xff;
+	    buf[9 + i*3] = (position[i] >> 8) & 0xff;
 	}
         serial.writeBuffer(buf);    
     }
