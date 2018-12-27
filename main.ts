@@ -393,13 +393,12 @@ namespace startbit {
     //% weight=98 blockId=startbit_setBusServos block="Bus servos|port %port|index %index|angle(-120~120) %angle|duration %duration"
     //% angle.min=-120 angle.max=120
     export function startbit_setBusServos(port: startbit_busServoPort, index: number[], angle: number[], duration: number) {
-	let position = [];
         for (let i = 0; i < angle.length; i++) {
 	    if (angle[i] > 120 || angle[i] < -120) {
             return;
 	    }
 	angle[i] += 120;
-        position[i] = mapRGB(angle[i], 0, 240, 0, 1000);
+        angle[i] = mapRGB(angle[i], 0, 240, 0, 1000);
 	}
 	    
         let buf = pins.createBuffer(index.length+7);
@@ -412,8 +411,8 @@ namespace startbit {
         buf[6] = (duration >> 8) & 0xff;
 	for (let i = 0; i < angle.length; i++) {
 	    buf[7 + i*3] = index[i];
-	    //buf[8 + i*3] = position[i] & 0xff;
-	    //buf[9 + i*3] = (position[i] >> 8) & 0xff;
+	    //buf[8 + i*3] = angle[i] & 0xff;
+	    //buf[9 + i*3] = (angle[i] >> 8) & 0xff;
 	}
         serial.writeBuffer(buf);    
     }
