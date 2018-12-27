@@ -398,7 +398,7 @@ namespace startbit {
             return;
 	    }
 	angle[i] += 120;
-        //let position[i] = mapRGB(angle, 0, 240, 0, 1000);
+        let position[i] = mapRGB(angle, 0, 240, 0, 1000);
 	}
 	    
         let buf = pins.createBuffer(index.length+7);
