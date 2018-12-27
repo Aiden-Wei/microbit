@@ -394,11 +394,11 @@ namespace startbit {
     //% angle.min=-120 angle.max=120
     export function startbit_setBusServos(port: startbit_busServoPort, index: number[], angle: number[], duration: number) {
         for (let i = 0; i < angle.length; i++) {
-	    if (angle[i] > 120 || angle[i] < -120) {
-                return;
-		}
-	angle[i] += 120;
-        let position[i] = mapRGB(angle, 0, 240, 0, 1000);
+	    //if (angle[i] > 120 || angle[i] < -120) {
+            // return;
+	    //}
+	//angle[i] += 120;
+        //let position[i] = mapRGB(angle, 0, 240, 0, 1000);
 	}
 	    
         let buf = pins.createBuffer(index.length+7);
@@ -410,11 +410,11 @@ namespace startbit {
         buf[5] = duration & 0xff;
         buf[6] = (duration >> 8) & 0xff;
 	for (let i = 0; i < angle.length; i++) {
-	    buf[7 + i*3] = index[i];
-	    buf[8 + i*3] = position[i] & 0xff;
-	    buf[9 + i*3] = (position[i] >> 8) & 0xff;
+	    //buf[7 + i*3] = index[i];
+	    //buf[8 + i*3] = position[i] & 0xff;
+	    //buf[9 + i*3] = (position[i] >> 8) & 0xff;
 	}
-        serial.writeBuffer(buf);    
+        //serial.writeBuffer(buf);    
     }
     /**
     * Set the angle of bus servo 1 to 8, range of -120~120 degree
