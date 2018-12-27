@@ -186,6 +186,8 @@ namespace startbit {
 
     let macStr: string = "";
     let actiongroup_finished = false;
+    let index: number[] = [];
+    index = [];
     /**
     * Get the handle command.
     */
