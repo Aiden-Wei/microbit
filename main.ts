@@ -394,9 +394,9 @@ namespace startbit {
     //% angle.min=-120 angle.max=120
     export function startbit_setBusServos(port: startbit_busServoPort, index: number[], angle: number[], duration: number) {
         for (let i = 0; i < angle.length; i++) {
-	    //if (angle[i] > 120 || angle[i] < -120) {
-            // return;
-	    //}
+	    if (angle[i] > 120 || angle[i] < -120) {
+            return;
+	    }
 	//angle[i] += 120;
         //let position[i] = mapRGB(angle, 0, 240, 0, 1000);
 	}
