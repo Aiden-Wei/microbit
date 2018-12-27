@@ -385,11 +385,17 @@ namespace startbit {
         buf[9] = (position >> 8) & 0xff;
         serial.writeBuffer(buf);
     }
-
+    /**
+    * Set the angle of bus servo 1 to 12, range of -120~120 degree
+    */
+    //% weight=98 blockId=startbit_setBusServos block="Set bus servo|port %port|index %index|angle(-120~1200) %angle|duration %duration"
+    //% angle.min=-120 angle.max=120
+    export function startbit_setBusServos(port: startbit_busServoPort, index: number, angle: number, duration: number) {
+	    }
     /**
     * Set the angle of bus servo 1 to 8, range of -120~120 degree
     */
-    //% weight=98 blockId=startbit_setBusServo block="Set bus servo|port %port|index %index|angle(-120~1200) %angle|duration %duration"
+    //% weight=98 blockId=startbit_setBusServo block="Bus servos|port %port|index %index|angle(-120~1200) %angle|duration %duration"
     //% angle.min=-120 angle.max=120
     export function startbit_setBusServo(port: startbit_busServoPort, index: number, angle: number, duration: number) {
         if (angle > 120 || angle < -120) {
