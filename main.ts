@@ -187,7 +187,7 @@ namespace startbit {
     let macStr: string = "";
     let actiongroup_finished = false;
     let servo_id: number[] = [];
-    servo_id = [];
+    servo_id = [1];
     /**
     * Get the handle command.
     */
@@ -392,7 +392,7 @@ namespace startbit {
     */
     //% weight=98 blockId=startbit_setBusServos block="Bus servos|port %port|index %index|angle(-120~120) %angle|duration %duration"
     //% angle.min=-120 angle.max=120
-    export function startbit_setBusServos(port: startbit_busServoPort, index: servo_id, angle: number[], duration: number) {
+    export function startbit_setBusServos(port: startbit_busServoPort, index: servo_id, angle: number, duration: number) {
 	    
 	    }
     /**
