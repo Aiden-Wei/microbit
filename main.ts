@@ -185,9 +185,7 @@ namespace startbit {
     let servo2Angle: number = 0xfff;
 
     let macStr: string = "";
-    let actiongroup_finished = false;
-    let servo_id: number[] = [];
-    servo_id = [1];
+    let actiongroup_finished = true;
     /**
     * Get the handle command.
     */
@@ -198,18 +196,10 @@ namespace startbit {
         if (cnt == 0)
             return;
         let index = findIndexof(handleCmd, "$", 0);
-        if (index != -1) {
-		
+        if (index != -1) {	
             let cmd: string = handleCmd.substr(0, index);
-            if (cmd.charAt(0).compare("W") == 0) {
-		actiongroup_finished = true;  
-	    }
             if (cmd.charAt(0).compare("A") == 0) {
-		//if (cmd.length == 5) {
-			//actiongroup_finished = true;
-		//}
 		 if (cmd.length == 7) {
-			 //actiongroup_finished = true;
                     let arg1Int: number = strToNumber(cmd.substr(1, 2));
                     let arg2Int: number = strToNumber(cmd.substr(3, 2));
                     let arg3Int: number = strToNumber(cmd.substr(5, 2));
@@ -224,11 +214,12 @@ namespace startbit {
                     if (arg2Int != -1) {
                         volume = arg2Int;
                     }
-                } 
-		else {
-			//actiongroup_finished = true;
-                }
-		//actiongroup_finished = true;    
+                 } 
+		 else if (cmd.length == 5) {
+			actiongroup_finished = true;
+		 }
+		 else {
+                 }
             }
 
             if (cmd.charAt(0).compare("C") == 0 && cmd.length == 11) {
@@ -389,7 +380,7 @@ namespace startbit {
     }
     /**
     * Set the angle of bus servo 1 to 12, range of -120~120 degree
-    */
+    
     //% weight=98 blockId=startbit_setBusServos block="Bus servos|port %port|index %index|angle(-120~120) %angle|duration %duration"
     //% angle.min=-120 angle.max=120
     export function startbit_setBusServos(port: startbit_busServoPort, index: number[], angle: number[], duration: number) {
@@ -416,11 +407,37 @@ namespace startbit {
 	}
         serial.writeBuffer(buf);    
     }
+    */
     /**
-    * Set the angle of bus servo 1 to 8, range of -120~120 degree
+    * Set the angle of bus servo 1 to 12, range of -120~120 degree
     */
     //% weight=98 blockId=startbit_setBusServo block="Set bus servo|port %port|index %index|angle(-120~120) %angle|duration %duration"
     //% angle.min=-120 angle.max=120
+    export function startbit_setBusServos(port: startbit_busServoPort, index: number[], angle: number[], duration: number) {
+        for (let i = 0; i < angle.length; i++) {
+	    if (angle[i] > 120 || angle[i] < -120) {
+            return;
+	    }
+	angle[i] += 120;
+        angle[i] = mapRGB(angle[i], 0, 240, 0, 1000);
+	}
+	    
+        let buf = pins.createBuffer(3*index.length+7);
+        buf[0] = 0x55;
+        buf[1] = 0x55;
+        buf[2] = (index.length*3 + 5) & 0xff;
+        buf[3] = 0x35;//cmd type DEC 54
+        buf[4] = (index.length) & 0xff;
+        buf[5] = duration & 0xff;
+        buf[6] = (duration >> 8) & 0xff;
+	for (let i = 0; i < index.length; i++) {
+	    buf[7 + i*3] = index[i];
+	    buf[8 + i*3] = angle[i] & 0xff;
+	    buf[9 + i*3] = (angle[i] >> 8) & 0xff;
+	}
+        serial.writeBuffer(buf);    
+    }
+	/**
     export function startbit_setBusServo(port: startbit_busServoPort, index: number, angle: number, duration: number) {
         if (angle > 120 || angle < -120) {
             return;
@@ -443,7 +460,7 @@ namespace startbit {
         buf[9] = (position >> 8) & 0xff;
         serial.writeBuffer(buf);
     }
-
+    */
     /**
     * Set the servo controller to run a actiongroup
     * @param times Running times. eg: 1
