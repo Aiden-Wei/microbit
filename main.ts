@@ -411,8 +411,8 @@ namespace startbit {
         buf[6] = (duration >> 8) & 0xff;
 	for (let i = 0; i < angle.length; i++) {
 	    buf[7 + i*3] = index[i];
-	    //buf[8 + i*3] = angle[i] & 0xff;
-	    //buf[9 + i*3] = (angle[i] >> 8) & 0xff;
+	    buf[8 + i*3] = angle[i] & 0xff;
+	    buf[9 + i*3] = (angle[i] >> 8) & 0xff;
 	}
         serial.writeBuffer(buf);    
     }
