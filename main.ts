@@ -186,8 +186,6 @@ namespace startbit {
 
     let macStr: string = "";
     let actiongroup_finished = true;
-    let servo_id: number[] = [];
-    servo_id = [1];
     /**
     * Get the handle command.
     */
@@ -386,13 +384,13 @@ namespace startbit {
     */
     //% weight=98 blockId=startbit_setBusServo block="Set bus servo|port %port|index %index|angle(-120~120) %angle|duration %duration"
     //% angle.min=-120 angle.max=120
-    export function startbit_setBusServos(port: startbit_busServoPort, index: servo_id, angle: number[], duration: number) {
+    export function startbit_setBusServos(port: startbit_busServoPort, index: number[], angle: number[], duration: number) {
         for (let i = 0; i < angle.length; i++) {
 	    if (angle[i] > 120 || angle[i] < -120) {
             return;
 	    }
-	angle[i] += 120;
-        angle[i] = mapRGB(angle[i], 0, 240, 0, 1000);
+	    angle[i] += 120;
+            angle[i] = mapRGB(angle[i], 0, 240, 0, 1000);
 	}
 	    
         let buf = pins.createBuffer(3*index.length+7);
