@@ -384,7 +384,7 @@ namespace startbit {
     */
     //% weight=98 blockId=startbit_setBusServo block="Set bus servo|port %port|index %index|angle(-120~120) %angle|duration %duration"
     //% angle.min=-120 angle.max=120
-    export function startbit_setBusServos(port: startbit_busServoPort, index: number[], angle: number[], duration: number) {
+    export function startbit_setBusServos(port: startbit_busServoPort, index: number[] = [1], angle: number[] = [0], duration: number) {
         for (let i = 0; i < angle.length; i++) {
 	    if (angle[i] > 120 || angle[i] < -120) {
             return;
