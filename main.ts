@@ -401,15 +401,15 @@ namespace startbit {
         angle[i] = mapRGB(angle[i], 0, 240, 0, 1000);
 	}
 	    
-        let buf = pins.createBuffer(angle.length+7);
+        let buf = pins.createBuffer(3*index.length+7);
         buf[0] = 0x55;
         buf[1] = 0x55;
-        buf[2] = (angle.length*3 + 5) & 0xff;
+        buf[2] = (index.length*3 + 5) & 0xff;
         buf[3] = 0x01;//cmd type DEC 54
-        buf[4] = (angle.length) & 0xff;
+        buf[4] = (index.length) & 0xff;
         buf[5] = duration & 0xff;
         buf[6] = (duration >> 8) & 0xff;
-	for (let i = 0; i < angle.length; i++) {
+	for (let i = 0; i < index.length; i++) {
 	    buf[7 + i*3] = index[i];
 	    buf[8 + i*3] = angle[i] & 0xff;
 	    buf[9 + i*3] = (angle[i] >> 8) & 0xff;
