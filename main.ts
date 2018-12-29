@@ -378,7 +378,14 @@ namespace startbit {
         buf[9] = (position >> 8) & 0xff;
         serial.writeBuffer(buf);
     }
- 
+    
+     /**
+     *  Creat a array   
+     */
+    //% weight=72 blockId=creat_array block="Creat a Array"
+    export function creat_array(servo_id?: number[] = []) :number[]{
+	    renturn servo_id;
+    }
     /**
     * Set the angle of bus servo 1 to 12, range of -120~120 degree
     */
