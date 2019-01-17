@@ -97,8 +97,8 @@ namespace startbit {
     export enum startbit_CmdType {
         //% block="Invalid command"
         NO_COMMAND = 0,
-        //% block="car run"
-        CAR_RUN = 1,
+        //% block="robot run"
+        ROBOT_RUN = 1,
         //% block="Servo"
         SERVO = 2,
         //% block="Ultrasonic distance"
@@ -128,8 +128,8 @@ namespace startbit {
     }
 
     export enum startbit_CarRunCmdType {
-        //% block="Stop"
-        STOP = 0,
+        //% block="Stand"
+        STAND = 0,
         //% block="Go ahead"
         GO_AHEAD,
         //% block="Back"
@@ -138,12 +138,14 @@ namespace startbit {
         TURN_LEFT,
         //% block="Turn right"
         TURN_RIGHT,
-        //% block="Go ahead slowly"
-        GO_AHEAD_SLOW,
-        //% block="Turn left slowly"
-        TURN_LEFT_SLOW,
-        //% block="Turn right slowly"
-        TURN_RIGHT_SLOW,
+        //% block="overturn front"
+        OVERTURN_FRONT,
+        //% block="overturn back"
+        OVERTURN_BACK,
+        //% block="push ups"
+        PUSH_UPS,
+        //% block="wave"
+        WAVE,
         //% block="Invalid command"
         COMMAND_ERRO
     }
