@@ -97,7 +97,7 @@ namespace startbit {
     export enum startbit_CmdType {
         //% block="Invalid command"
         NO_COMMAND = 0,
-        //% block="robot run"
+        //% block="Robot run"
         ROBOT_RUN = 1,
         //% block="Servo"
         SERVO = 2,
