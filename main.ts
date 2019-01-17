@@ -1158,7 +1158,7 @@ namespace startbit {
     export function startbit_getArgs(str: string, index: number): number {
         let cmdType = startbit_analyzeBluetoothCmd(str);
         if (cmdType == startbit_CmdType.NO_COMMAND) {
-            return startbit_CarRunCmdType.COMMAND_ERRO;
+            return startbit_RobotRunCmdType.COMMAND_ERRO;
         }
         else {
             let dataIndex = 7;
