@@ -127,29 +127,6 @@ namespace startbit {
         GET_MAC = 14
     }
 
-    export enum startbit_RobotRunCmdType {
-        //% block="Stand"
-        STAND = 0,
-        //% block="Go ahead"
-        GO_AHEAD,
-        //% block="Back"
-        GO_BACK,
-        //% block="Turn left"
-        TURN_LEFT,
-        //% block="Turn right"
-        TURN_RIGHT,
-        //% block="overturn front"
-        OVERTURN_FRONT,
-        //% block="overturn back"
-        OVERTURN_BACK,
-        //% block="push ups"
-        PUSH_UPS,
-        //% block="wave"
-        WAVE,
-        //% block="Invalid command"
-        COMMAND_ERRO
-    }
-
     /**
      * Startbit initialization, please execute at boot time
     */
@@ -1195,13 +1172,6 @@ namespace startbit {
         return type;
     }
 
-    /**
-     * The command type of the tank is stop, go ahead, back, turn left, turn right, slow down, turn left slowly, turn right slowly.
-     */
-    //% weight=62 blockId=startbit_getRunRobotType block="Robot run type %type"
-    export function startbit_getRunRobotType(type: startbit_RobotRunCmdType): number {
-        return type;
-    }
 
     /**
      * The distance from the ultrasonic obstacle is the standard command, which is sent to the mobile phone. The APP will indicate the distance of the ultrasonic obstacle.
