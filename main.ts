@@ -127,7 +127,7 @@ namespace startbit {
         GET_MAC = 14
     }
 
-    export enum startbit_CarRunCmdType {
+    export enum startbit_RobotRunCmdType {
         //% block="Stand"
         STAND = 0,
         //% block="Go ahead"
