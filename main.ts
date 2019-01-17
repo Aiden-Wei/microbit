@@ -1199,7 +1199,7 @@ namespace startbit {
      * The command type of the tank is stop, go ahead, back, turn left, turn right, slow down, turn left slowly, turn right slowly.
      */
     //% weight=62 blockId=startbit_getRunCarType block="Car run type %type"
-    export function startbit_getRunCarType(type: startbit_CarRunCmdType): number {
+    export function startbit_getRobotCarType(type: startbit_RobotRunCmdType): number {
         return type;
     }
 
