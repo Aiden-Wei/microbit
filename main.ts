@@ -419,7 +419,7 @@ namespace startbit {
     /**
     * Stop running actiongroup
     */
-    //% weight=98 blockId=startbit_stopnActionGroup block="Stop ActionGroup|index %index|times %times"
+    //% weight=98 blockId=startbit_stopnActionGroup block="Stop ActionGroup|index %index"
     export function startbit_stopActionGroup(index: number) {
 
         let buf = pins.createBuffer(7);
