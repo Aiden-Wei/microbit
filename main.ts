@@ -426,7 +426,7 @@ namespace startbit {
         buf[0] = 0x55;
         buf[1] = 0x55;
         buf[2] = 0x02;
-        buf[3] = 0x07;//cmd type CMD_ACTION_GROUP_RUN
+        buf[3] = 0x07;//cmd type CMD_ACTION_GROUP_STOP
 	    
 	actiongroup_finished = false;
         serial.writeBuffer(buf);
