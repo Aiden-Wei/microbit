@@ -170,6 +170,7 @@ namespace startbit {
     let TM1640_CMD2 = 0xC0;
     let TM1640_CMD3 = 0x80;
     let _SEGMENTS = [0x3F, 0x06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x07, 0x7F, 0x6F, 0x77, 0x7C, 0x39, 0x5E, 0x79, 0x71];
+	
     /**
     * Get the handle command.
     */
@@ -644,7 +645,7 @@ namespace startbit {
          * @param val the brightness of the TM1640, eg: 7
          */
         //% blockId="TM1640_set_intensity" block="%tm|set intensity %val"
-        //% weight=50 blockGap=8
+        //% weight=74 blockGap=8
         //% parts="TM1640"
         intensity(val: number = 7) {
             if (val < 1) {
@@ -676,7 +677,7 @@ namespace startbit {
          * @param bit the position of the LED, eg: 0
          */
         //% blockId="TM1640_showbit" block="%tm|show digit %num |at %bit"
-        //% weight=90 blockGap=8
+        //% weight=76 blockGap=8
         //% parts="TM1640"
         showbit(num: number = 5, bit: number = 0) {
             this.buf[bit % this.count] = _SEGMENTS[num % 16]
@@ -689,7 +690,7 @@ namespace startbit {
           * @param num is a number, eg: 0
           */
         //% blockId="TM1640_shownum" block="%tm|show number %num"
-        //% weight=91 blockGap=8
+        //% weight=76 blockGap=8
         //% parts="TM1640"
         showNumber(num: number) {
             if (num < 0) {
@@ -708,7 +709,7 @@ namespace startbit {
           * @param num is a hex number, eg: 0
           */
         //% blockId="TM1640_showhex" block="%tm|show hex number %num"
-        //% weight=90 blockGap=8
+        //% weight=76 blockGap=8
         //% parts="TM1640"
         showHex(num: number) {
             if (num < 0) {
@@ -728,7 +729,7 @@ namespace startbit {
          * @param show is show/hide dp, eg: true
          */
         //% blockId="TM1640_showDP" block="%tm|DotPoint at %bit|show %show"
-        //% weight=70 blockGap=8
+        //% weight=76 blockGap=8
         //% parts="TM1640"
         showDP(bit: number = 1, show: boolean = true) {
             bit = bit % this.count
@@ -740,7 +741,7 @@ namespace startbit {
          * clear LED. 
          */
         //% blockId="TM1640_clear" block="clear %tm"
-        //% weight=80 blockGap=8
+        //% weight=75 blockGap=8
         //% parts="TM1640"
         clear() {
             for (let i = 0; i < this.count; i++) {
@@ -753,7 +754,7 @@ namespace startbit {
          * turn on LED. 
          */
         //% blockId="TM1640_on" block="turn on %tm"
-        //% weight=86 blockGap=8
+        //% weight=75 blockGap=8
         //% parts="TM1640"
         on() {
             this._ON = 8;
@@ -765,7 +766,7 @@ namespace startbit {
          * turn off LED. 
          */
         //% blockId="TM1640_off" block="turn off %tm"
-        //% weight=85 blockGap=8
+        //% weight=75 blockGap=8
         //% parts="TM1640"
         off() {
             this._ON = 0;
@@ -780,7 +781,7 @@ namespace startbit {
      * @param intensity the brightness of the LED, eg: 7
      * @param count the count of the LED, eg: 4
      */
-    //% weight=200 blockGap=8
+    //% weight=77 blockGap=8
     //% blockId="TM1640_create" block="CLK %clk|DIO %dio|intensity %intensity|LED count %count"
     export function create(clk: DigitalPin, dio: DigitalPin, intensity: number, count: number): TM1640LEDs {
         let tm = new TM1640LEDs();
