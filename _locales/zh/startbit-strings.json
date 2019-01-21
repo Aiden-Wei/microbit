@@ -131,5 +131,8 @@
 	"startbit.startbit_actionRunover|block":"动作组运行完成",
 	"startbit.startbit_setFanSpeed|block":"设置 |%port 风扇速度(-100~100) |%speed1",
 	"startbit.startbit_fanPort.port1|block":"接口1",
-	"startbit.startbit_fanPort.port2|block":"接口2"
+	"startbit.startbit_fanPort.port2|block":"接口2",
+	"startbit.startbit_digitaltubePort.port1|block":"接口1",
+	"startbit.startbit_digitaltubePort.port2|block":"接口2"
+	"startbit.create|block":"|亮度 %intensity|LED数量 %count",
 }
