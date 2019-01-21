@@ -1260,7 +1260,7 @@ namespace startbit {
          * @param brightness a measure of LED brightness in 0-255. eg: 255
     */
     //% blockId="startbit_setBrightness" block="set brightness %brightness"
-    //% weight=77
+    //% weight=73
     export function startbit_setBrightness(brightness: number): void {
         lhRGBLight.setBrightness(brightness);
     }
@@ -1268,7 +1268,7 @@ namespace startbit {
     /**
      * Set the color of the colored lights, after finished the setting please perform  the display of colored lights.
      */
-    //% weight=76 blockId=startbit_setPixelRGB block="Set|%lightoffset|color to %rgb"
+    //% weight=73 blockId=startbit_setPixelRGB block="Set|%lightoffset|color to %rgb"
     export function startbit_setPixelRGB(lightoffset: StartbitLights, rgb: StartbitRGBColors) {
         lhRGBLight.setPixelColor(lightoffset, rgb);
     }
@@ -1277,7 +1277,7 @@ namespace startbit {
     /**
      * Set RGB Color argument
      */
-    //% weight=75 blockId=startbit_setPixelRGBArgs block="Set|%lightoffset|color to %rgb"
+    //% weight=73 blockId=startbit_setPixelRGBArgs block="Set|%lightoffset|color to %rgb"
     export function startbit_setPixelRGBArgs(lightoffset: StartbitLights, rgb: number) {
         lhRGBLight.setPixelColor(lightoffset, rgb);
     }
@@ -1286,7 +1286,7 @@ namespace startbit {
     /**
      * Display the colored lights, and set the color of the colored lights to match the use. After setting the color of the colored lights, the color of the lights must be displayed.
      */
-    //% weight=74 blockId=startbit_showLight block="Show light"
+    //% weight=73 blockId=startbit_showLight block="Show light"
     export function startbit_showLight() {
         lhRGBLight.show();
     }
