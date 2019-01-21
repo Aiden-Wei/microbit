@@ -93,6 +93,12 @@ namespace startbit {
         port2
     }
 
+    export enum startbit_digitaltubePort {
+        //% block="Port 1"
+        port1 = 0x01,
+        //% block="Port 2"
+        port2 = 0x02
+    }
 
     export enum startbit_CmdType {
         //% block="Invalid command"
@@ -641,10 +647,10 @@ namespace startbit {
         }
 
         /**
-         * set TM1637 intensity, range is [0-8], 0 is off.
+         * set TM1640 intensity, range is [0-8], 0 is off.
          * @param val the brightness of the TM1640, eg: 7
          */
-        //% blockId="TM1640_set_intensity" block="%tm|set intensity %val"
+        //% blockId="TM1640_set_intensity" block="%digitaltube|set intensity %val"
         //% weight=74 blockGap=8
         //% parts="TM1640"
         intensity(val: number = 7) {
@@ -676,7 +682,7 @@ namespace startbit {
          * @param num number will show, eg: 5
          * @param bit the position of the LED, eg: 0
          */
-        //% blockId="TM1640_showbit" block="%tm|show digit %num |at %bit"
+        //% blockId="TM1640_showbit" block="%digitaltube|show digit %num |at %bit"
         //% weight=76 blockGap=8
         //% parts="TM1640"
         showbit(num: number = 5, bit: number = 0) {
@@ -689,7 +695,7 @@ namespace startbit {
           * show a number. 
           * @param num is a number, eg: 0
           */
-        //% blockId="TM1640_shownum" block="%tm|show number %num"
+        //% blockId="TM1640_shownum" block="%digitaltube|show number %num"
         //% weight=76 blockGap=8
         //% parts="TM1640"
         showNumber(num: number) {
@@ -708,7 +714,7 @@ namespace startbit {
           * show a hex number. 
           * @param num is a hex number, eg: 0
           */
-        //% blockId="TM1640_showhex" block="%tm|show hex number %num"
+        //% blockId="TM1640_showhex" block="%digitaltube|show hex number %num"
         //% weight=76 blockGap=8
         //% parts="TM1640"
         showHex(num: number) {
@@ -728,7 +734,7 @@ namespace startbit {
          * @param bit is the position, eg: 1
          * @param show is show/hide dp, eg: true
          */
-        //% blockId="TM1640_showDP" block="%tm|DotPoint at %bit|show %show"
+        //% blockId="TM1640_showDP" block="%digitaltube|DotPoint at %bit|show %show"
         //% weight=76 blockGap=8
         //% parts="TM1640"
         showDP(bit: number = 1, show: boolean = true) {
@@ -740,7 +746,7 @@ namespace startbit {
         /**
          * clear LED. 
          */
-        //% blockId="TM1640_clear" block="clear %tm"
+        //% blockId="TM1640_clear" block="clear %digitaltube"
         //% weight=75 blockGap=8
         //% parts="TM1640"
         clear() {
@@ -753,7 +759,7 @@ namespace startbit {
         /**
          * turn on LED. 
          */
-        //% blockId="TM1640_on" block="turn on %tm"
+        //% blockId="TM1640_on" block="turn on %digitaltube"
         //% weight=75 blockGap=8
         //% parts="TM1640"
         on() {
@@ -765,7 +771,7 @@ namespace startbit {
         /**
          * turn off LED. 
          */
-        //% blockId="TM1640_off" block="turn off %tm"
+        //% blockId="TM1640_off" block="turn off %digitaltube"
         //% weight=75 blockGap=8
         //% parts="TM1640"
         off() {
@@ -782,17 +788,27 @@ namespace startbit {
      * @param count the count of the LED, eg: 4
      */
     //% weight=77 blockGap=8
-    //% blockId="TM1640_create" block="CLK %clk|DIO %dio|intensity %intensity|LED count %count"
-    export function create(clk: DigitalPin, dio: DigitalPin, intensity: number, count: number): TM1640LEDs {
-        let tm = new TM1640LEDs();
-        tm.clk = clk;
-        tm.dio = dio;
+    //% blockId="TM1640_create" block="%digitaltube|%port|intensity %intensity|LED count %count"
+    export function create(port: startbit_digitaltubePort, intensity: number, count: number): TM1640LEDs {
+        let digitaltube = new TM1640LEDs();
+        switch (port) {
+            case startbit_digitaltubePort.port1:
+                digitaltube.clk = DigitalPin.P2;
+                digitaltube.dio = DigitalPin.P1;
+                break;
+            case startbit_digitaltubePort.port2:
+                digitaltube.clk = DigitalPin.P14;
+                digitaltube.dio = DigitalPin.P13;
+                break;
+        }
+
         if ((count < 1) || (count > 5)) count = 4;
-        tm.count = count;
-        tm.brightness = intensity;
-        tm.init();
-        return tm;
+        digitaltube.count = count;
+        digitaltube.brightness = intensity;
+        digitaltube.init();
+        return digitaltube;
     }
+
 
     const APDS9960_I2C_ADDR = 0x39;
     const APDS9960_ID_1 = 0xA8;
