@@ -788,7 +788,7 @@ namespace startbit {
      * @param count the count of the LED, eg: 4
      */
     //% weight=77 blockGap=8
-    //% blockId="TM1640_create" block="%digitaltube|%port|intensity %intensity|LED count %count"
+    //% blockId="TM1640_create" block="%port|intensity %intensity|LED count %count"
     export function create(port: startbit_digitaltubePort, intensity: number, count: number): TM1640LEDs {
         let digitaltube = new TM1640LEDs();
         switch (port) {
