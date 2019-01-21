@@ -134,5 +134,5 @@
 	"startbit.startbit_fanPort.port2|block":"接口2",
 	"startbit.startbit_digitaltubePort.port1|block":"接口1",
 	"startbit.startbit_digitaltubePort.port2|block":"接口2"
-	"startbit.create|block":"|亮度 %intensity|LED数量 %count",
+	"startbit.create|block":"设置接口为|亮度 %intensity|LED数量 %count",
 }
